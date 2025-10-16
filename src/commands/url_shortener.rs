@@ -8,24 +8,17 @@ use std::path::PathBuf;
 
 #[derive(Subcommand)]
 pub enum UrlAction {
-    /// Add a new URL
     Add {
-        /// URL to shorten
         url: String,
     },
     
-    /// Get original URL from short code
     Get {
-        /// Short code
         code: String,
     },
     
-    /// List all URLs
     List,
     
-    /// Open URL in browser
     Open {
-        /// Short code
         code: String,
     },
 }
@@ -67,7 +60,7 @@ fn generate_short_code(url: &str) -> String {
     let mut hasher = Sha256::new();
     hasher.update(url.as_bytes());
     let result = hasher.finalize();
-    hex::encode(&result[..4]) // Use first 4 bytes for short code
+    hex::encode(&result[..4])
 }
 
 pub fn handle(action: UrlAction) -> Result<()> {
