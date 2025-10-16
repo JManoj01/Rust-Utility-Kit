@@ -2,7 +2,7 @@
 
 An all-in-one CLI toolkit for developers and students.
 
-## ✨ Features
+## Features
 
 **🔗 URL Shortener** - Create and manage shortened URLs locally with hash-based codes
 
