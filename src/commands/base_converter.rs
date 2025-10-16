@@ -1,15 +1,16 @@
 use crate::commands::Result;
 use colored::Colorize;
+use base64::prelude::*;
 
 pub fn handle(value: &str, from: &str, to: &str) -> Result<()> {
     let from_lower = from.to_lowercase();
     let to_lower = to.to_lowercase();
     
     let result = match (from_lower.as_str(), to_lower.as_str()) {
-        ("text", "base64") => base64::encode(value),
+        ("text", "base64") => BASE64_STANDARD.encode(value),
         
         ("base64", "text") => {
-            let decoded = base64::decode(value)?;
+            let decoded = BASE64_STANDARD.decode(value)?;
             String::from_utf8(decoded)?
         }
         
